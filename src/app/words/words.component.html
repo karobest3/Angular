@@ -1,0 +1,29 @@
+<div *ngIf='flagForm'>
+    <input placeholder="English" [(ngModel)]="newEn" />
+    <input placeholder="Vietnamese" [(ngModel)]="newVn" />
+    <button (click)="addNewWord();">Add</button>
+    <select [(ngModel)]="filterStatus">
+        <option value="all">
+            all
+        </option>
+        <option value="memorized">
+            memorized
+        </option>
+        <option value="unmemorized">
+            unmemorized
+        </option>
+    </select>
+</div>
+<input type="button" (click)="flagForm = !flagForm" value="Click" />
+<div *ngFor="let word of arrWords">
+    <div *ngIf="getShowStatus(word.memorized)">
+
+        <h4 [ngStyle]="{ color: word.memorized ? 'blue' : 'red' }">
+            {{ word.en }}</h4>
+        <p>{{ word.vn }}</p>
+        <button (click)="delete(word.id)">Delete</button>
+        <button (click)="word.memorized = !word.memorized">
+            {{ word.memorized ? 'Unmemorized' : 'Memorized' }}</button>
+    </div>
+    <br />
+</div>

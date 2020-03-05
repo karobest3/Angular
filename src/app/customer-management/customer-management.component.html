@@ -1,0 +1,36 @@
+<div *ngFor="let customer of listCustomers">
+    <p>{{ customer.id }}</p>
+    <p>{{ customer.firstName }}</p>
+    <p>{{ customer.lastName }}</p>
+</div>
+
+
+
+
+
+
+
+
+  import { Component, OnInit } from '@angular/core';
+import { Customer } from 'src/app/models/customer'
+import { CustomerService } from 'src/app/service/customer.service'
+
+@Component({
+  selector: 'app-list',
+  templateUrl: './list.component.html',
+  styleUrls: ['./list.component.scss']
+})
+export class ListComponent implements OnInit {
+
+  constructor(private customerService: CustomerService) { }
+  listCustomers: Array<Customer>;
+  ngOnInit() {
+    this.customerService.getListCustomers().subscribe(
+      data => {
+        console.log(data);
+        this.listCustomers = data;
+      }
+    );
+  }
+
+}

@@ -1,2 +1,10 @@
-<h3>{{ en }}</h3>
+<h3 [hidden] = "forgot">{{ en }}</h3>
 <h3>{{ vn }}</h3>
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">Hello bootstrap</div>
+        <div> hello  <i class="fas fa-users"></i>   </div>
+        <img [src]="imgUrl"/>
+        <button (click) = "toggleForgot()" class="btn btn-primary">Toggle forgot</button>
+    </div>
+</div>
